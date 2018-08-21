@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vunke.auth">
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 从SDCard读取数据权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 加权限禁止HOME键 -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    
+    <application
+        android:name="com.vunke.auth.base.BaseApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme2" >
+        <!-- android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"  -->
+        <!--认证失败页面-->
+        <activity android:name="com.vunke.auth.activity.AuthActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateVisible|adjustPan|stateHidden">
+
+        </activity>
+        <!-- 认证页面 -->
+        <activity android:name="com.vunke.auth.activity.AuthSuccessActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateVisible|adjustPan|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.vunke.auth.receiver.ConnectionChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.vunke.auth.receiver.PlayFinishReceiver">
+            <intent-filter>
+                <action android:name="com.vunke.auth.playfinish"></action>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.vunke.auth.service.AuthService">
+            <intent-filter>
+                <action android:name="com.vunke.auth.auth"></action>
+                <action android:name="com.vunke.auth.reauth"></action>
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="com.vunke.auth.db.UserGroupInfoProvider"
+            android:authorities="com.huawei.hunandx.auth.provider"
+            android:exported="true">
+        </provider>
+
+        <provider
+            android:name="com.vunke.auth.db.GroupStrategyProvide"
+            android:authorities="com.vunke.auth.auth2"
+            android:exported="false" />
+        <provider
+            android:name="com.vunke.auth.db.AuthProvider"
+            android:authorities="com.vunke.auth.authentication"
+            android:exported="false">
+
+        </provider>
+    </application>
+
+</manifest>

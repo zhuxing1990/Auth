@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.vunke.auth"
+        minSdkVersion 17
+        targetSdkVersion 17
+        versionCode 1
+        versionName "V1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.lzy.net:okgo:+'
+    //可以单独使用，不需要依赖下方的扩展包
+    //OKhttp rx
+    compile 'com.lzy.net:okrx2:+'
+    //RxJava扩展支持，根据需要添加
+    //OkhttpServer
+    compile 'com.lzy.net:okserver:+'
+    //下载管理和上传管理扩展，根据需要添加
+    //RX JAVA2
+    compile 'io.reactivex.rxjava2:rxandroid:+'
+    compile 'io.reactivex.rxjava2:rxjava:+'
+    compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    compile 'com.google.code.gson:gson:2.8.2'
+
+}

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Auth</string>
+    <string name="prompt">提示</string>
+    <string name="auth_error">用户认证失败,按确定重新认证。</string>
+    <string name="goback_cancel">按“返回”键取消</string>
+    <string name="confirm">确认</string>
+    <!--<string name="determin">确  定</string>-->
+    <!--<string name="empty_username_tip">用户名为空</string>-->
+    <!--<string name="username_small_seven">用户名小与7位</string>-->
+    <!--<string name="empty_pwd_tip">密码为空</string>-->
+    <!--<string name="please_enter_code">请 输 入 激 活 码</string>-->
+    <!--<string name="loading_config">正在加载配置中……</string>-->
+    <!--<string name="loading_config2">正在加载配置中…</string>-->
+    <!--<string name="loading_video">正在加载视频</string>-->
+</resources>
